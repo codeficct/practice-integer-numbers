@@ -99,18 +99,19 @@ Public Class Form1
         StudentBtn.ForeColor = Color.FromArgb(130, 83, 215)
         leftBorderBtn.Visible = False
     End Sub
+
+    Public Function EvenAndOdd(number As Integer) As Boolean
+    Return number Mod 2 = 0
+    End Function
+
+    '<-- 1. Accumuate terms according to the formula with odd digits -->
+    Public Function AccumulateOddDigits(number As Integer) As String
+    Dim result As String = ""
+    Dim digit As Byte
+    While number > 0
+        digit = number Mod 10
+        number \= 10
+
+    End While
+    End Function
 End Class
-'Public Function EvenAndOdd(number As Integer) As Boolean
-'    Return number Mod 2 = 0
-'End Function
-
-''<-- 1. Accumuate terms according to the formula with odd digits -->
-'Public Function AccumulateOddDigits(number As Integer) As String
-'    Dim result As String = ""
-'    Dim digit As Byte
-'    While number > 0
-'        digit = number Mod 10
-'        number \= 10
-
-'    End While
-'End Function
