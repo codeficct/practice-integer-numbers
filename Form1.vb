@@ -5,6 +5,17 @@ Public Class Form1
     Private leftBorderBtn As Panel
     Private currentBtn As Button
     Private borderSize As Integer = 0
+    'Drag Form
+    <DllImport("user32.DLL", EntryPoint:="ReleaseCapture")>
+    Private Shared Sub ReleaseCapture()
+    End Sub
+    <DllImport("user32.DLL", EntryPoint:="SendMessage")>
+    Private Shared Sub SendMessage(ByVal hWnd As System.IntPtr, ByVal wMsg As Integer, ByVal WParam As Integer, ByVal IParam As Integer)
+    End Sub
+    Private Sub PanelTitleBar_MouseDown(sender As Object, e As MouseEventArgs) Handles PanelTitleBar.MouseDown
+        ReleaseCapture()
+        SendMessage(Me.Handle, &H112&, &HF012&, 0)
+    End Sub
     'RESIZE OF FORM - CHANGE SIZE'
     Dim cGrip As Integer = 10
     Protected Overrides Sub WndProc(ByRef m As Message)
@@ -21,7 +32,7 @@ Public Class Form1
         End If
         MyBase.WndProc(m)
     End Sub
-    '----------------DRAW RECTANGLE / EXCLUDE CORNER PANEL' 
+    '----------------DRAW RECTANGLE / EXCLUDE CORNER PANEL'
     Dim sizeGripRectangle As Rectangle
     Dim tolerance As Integer = 15
     Protected Overrides Sub OnSizeChanged(ByVal e As EventArgs)
@@ -39,6 +50,7 @@ Public Class Form1
     '    MyBase.OnPaint(e)
     '    ControlPaint.DrawSizeGrip(e.Graphics, Color.Transparent, sizeGripRectangle)
     'End Sub
+
     'Constructor
     Public Sub New()
         ' Esta llamada es exigida por el diseñador.
@@ -134,17 +146,6 @@ Public Class Form1
         StudentBtn.BackColor = Color.FromArgb(34, 33, 74)
         StudentBtn.ForeColor = Color.FromArgb(130, 83, 215)
         leftBorderBtn.Visible = False
-    End Sub
-    'Drag Form
-    <DllImport("user32.DLL", EntryPoint:="ReleaseCapture")>
-    Private Shared Sub ReleaseCapture()
-    End Sub
-    <DllImport("user32.DLL", EntryPoint:="SendMessage")>
-    Private Shared Sub SendMessage(ByVal hWnd As System.IntPtr, ByVal wMsg As Integer, ByVal WParam As Integer, ByVal IParam As Integer)
-    End Sub
-    Private Sub PanelTitleBar_MouseDown(sender As Object, e As MouseEventArgs) Handles PanelTitleBar.MouseDown
-        ReleaseCapture()
-        SendMessage(Me.Handle, &H112&, &HF012&, 0)
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
