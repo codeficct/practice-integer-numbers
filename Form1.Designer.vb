@@ -51,11 +51,13 @@ Partial Class Form1
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.PanelContainer = New System.Windows.Forms.Panel()
         Me.PanelDesktop = New System.Windows.Forms.Panel()
+        Me.LabelInput2 = New System.Windows.Forms.Label()
+        Me.Input2 = New System.Windows.Forms.TextBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.HeaderTitle = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Result = New System.Windows.Forms.TextBox()
         Me.Input1 = New System.Windows.Forms.TextBox()
         Me.PanelStudent = New System.Windows.Forms.Panel()
         Me.Panel6 = New System.Windows.Forms.Panel()
@@ -441,11 +443,13 @@ Partial Class Form1
         'PanelDesktop
         '
         Me.PanelDesktop.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(74, Byte), Integer))
+        Me.PanelDesktop.Controls.Add(Me.LabelInput2)
+        Me.PanelDesktop.Controls.Add(Me.Input2)
         Me.PanelDesktop.Controls.Add(Me.Button2)
         Me.PanelDesktop.Controls.Add(Me.HeaderTitle)
         Me.PanelDesktop.Controls.Add(Me.Label5)
         Me.PanelDesktop.Controls.Add(Me.Label4)
-        Me.PanelDesktop.Controls.Add(Me.TextBox1)
+        Me.PanelDesktop.Controls.Add(Me.Result)
         Me.PanelDesktop.Controls.Add(Me.Input1)
         Me.PanelDesktop.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelDesktop.ForeColor = System.Drawing.Color.Transparent
@@ -453,6 +457,30 @@ Partial Class Form1
         Me.PanelDesktop.Name = "PanelDesktop"
         Me.PanelDesktop.Size = New System.Drawing.Size(710, 514)
         Me.PanelDesktop.TabIndex = 2
+        '
+        'LabelInput2
+        '
+        Me.LabelInput2.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.LabelInput2.AutoSize = True
+        Me.LabelInput2.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.LabelInput2.ForeColor = System.Drawing.Color.Gainsboro
+        Me.LabelInput2.Location = New System.Drawing.Point(203, 175)
+        Me.LabelInput2.Name = "LabelInput2"
+        Me.LabelInput2.Size = New System.Drawing.Size(26, 21)
+        Me.LabelInput2.TabIndex = 10
+        Me.LabelInput2.Text = "d1"
+        '
+        'Input2
+        '
+        Me.Input2.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.Input2.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(74, Byte), Integer))
+        Me.Input2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Input2.ForeColor = System.Drawing.Color.White
+        Me.Input2.Location = New System.Drawing.Point(233, 172)
+        Me.Input2.Name = "Input2"
+        Me.Input2.Size = New System.Drawing.Size(101, 29)
+        Me.Input2.TabIndex = 9
+        Me.Input2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Button2
         '
@@ -465,7 +493,7 @@ Partial Class Form1
         Me.Button2.ForeColor = System.Drawing.Color.Gainsboro
         Me.Button2.Image = CType(resources.GetObject("Button2.Image"), System.Drawing.Image)
         Me.Button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button2.Location = New System.Drawing.Point(559, 149)
+        Me.Button2.Location = New System.Drawing.Point(559, 166)
         Me.Button2.Name = "Button2"
         Me.Button2.Padding = New System.Windows.Forms.Padding(18, 4, 14, 4)
         Me.Button2.Size = New System.Drawing.Size(108, 41)
@@ -479,7 +507,7 @@ Partial Class Form1
         Me.HeaderTitle.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.HeaderTitle.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.HeaderTitle.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.HeaderTitle.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.HeaderTitle.Font = New System.Drawing.Font("Segoe UI", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.HeaderTitle.ForeColor = System.Drawing.Color.White
         Me.HeaderTitle.HideSelection = False
         Me.HeaderTitle.Location = New System.Drawing.Point(43, 52)
@@ -497,36 +525,37 @@ Partial Class Form1
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
         Me.Label5.ForeColor = System.Drawing.Color.Gainsboro
-        Me.Label5.Location = New System.Drawing.Point(45, 158)
+        Me.Label5.Location = New System.Drawing.Point(43, 175)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(39, 21)
+        Me.Label5.Size = New System.Drawing.Size(22, 21)
         Me.Label5.TabIndex = 5
-        Me.Label5.Text = "asss"
+        Me.Label5.Text = "N"
         '
         'Label4
         '
         Me.Label4.Anchor = System.Windows.Forms.AnchorStyles.None
         Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Label4.ForeColor = System.Drawing.Color.Gainsboro
-        Me.Label4.Location = New System.Drawing.Point(43, 224)
+        Me.Label4.Location = New System.Drawing.Point(43, 276)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(87, 21)
+        Me.Label4.Size = New System.Drawing.Size(98, 25)
         Me.Label4.TabIndex = 4
         Me.Label4.Text = "Resultado:"
         '
-        'TextBox1
+        'Result
         '
-        Me.TextBox1.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.TextBox1.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.TextBox1.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
-        Me.TextBox1.ForeColor = System.Drawing.Color.White
-        Me.TextBox1.Location = New System.Drawing.Point(136, 224)
-        Me.TextBox1.Multiline = True
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.ReadOnly = True
-        Me.TextBox1.Size = New System.Drawing.Size(531, 202)
-        Me.TextBox1.TabIndex = 3
+        Me.Result.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.Result.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(74, Byte), Integer))
+        Me.Result.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.Result.Font = New System.Drawing.Font("Segoe UI", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
+        Me.Result.ForeColor = System.Drawing.Color.White
+        Me.Result.Location = New System.Drawing.Point(173, 276)
+        Me.Result.Multiline = True
+        Me.Result.Name = "Result"
+        Me.Result.ReadOnly = True
+        Me.Result.Size = New System.Drawing.Size(490, 166)
+        Me.Result.TabIndex = 3
         '
         'Input1
         '
@@ -534,7 +563,7 @@ Partial Class Form1
         Me.Input1.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.Input1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Input1.ForeColor = System.Drawing.Color.White
-        Me.Input1.Location = New System.Drawing.Point(90, 155)
+        Me.Input1.Location = New System.Drawing.Point(73, 172)
         Me.Input1.Name = "Input1"
         Me.Input1.Size = New System.Drawing.Size(101, 29)
         Me.Input1.TabIndex = 1
@@ -928,7 +957,7 @@ Partial Class Form1
     Friend WithEvents HeaderTitle As TextBox
     Friend WithEvents Label5 As Label
     Friend WithEvents Label4 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents Result As TextBox
     Friend WithEvents Input1 As TextBox
     Friend WithEvents Button2 As Button
     Friend WithEvents PanelTitleBar As Panel
@@ -938,4 +967,6 @@ Partial Class Form1
     Friend WithEvents PanelFormContainer As Panel
     Friend WithEvents PanelRightContainer As Panel
     Friend WithEvents PanelAside As Panel
+    Friend WithEvents LabelInput2 As Label
+    Friend WithEvents Input2 As TextBox
 End Class

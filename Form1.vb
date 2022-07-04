@@ -5,6 +5,7 @@ Public Class Form1
     Private leftBorderBtn As Panel
     Private currentBtn As Button
     Private borderSize As Integer = 0
+    Dim currentExercise As Integer = 0
     'Drag Form
     <DllImport("user32.DLL", EntryPoint:="ReleaseCapture")>
     Private Shared Sub ReleaseCapture()
@@ -59,6 +60,8 @@ Public Class Form1
         leftBorderBtn = New Panel()
         leftBorderBtn.Size = New Size(7, 38)
         PanelMenu.Controls.Add(leftBorderBtn)
+        LabelInput2.Visible = False
+        Input2.Visible = False
     End Sub
 
     'Methods
@@ -87,57 +90,81 @@ Public Class Form1
             currentBtn.ForeColor = Color.Gainsboro
             currentBtn.TextAlign = ContentAlignment.MiddleCenter
         End If
+        LabelInput2.Visible = False
+        Input2.Visible = False
     End Sub
-
 
     Private Sub BtnExercise1_Click(sender As Object, e As EventArgs) Handles BtnExercise1.Click
         ActivateButton(sender, RGBColors.color1)
         HeaderTitle.Text = "1. Acumular términos de acuerdo a la formula con dígitos impares:"
+        currentExercise = 1
+        Result.Text = String.Empty
     End Sub
 
     Private Sub BtnExercise2_Click(sender As Object, e As EventArgs) Handles BtnExercise2.Click
         ActivateButton(sender, RGBColors.color2)
-        HeaderTitle.Text = "2. Eliminar los dígitos múltiplos de d1"
+        HeaderTitle.Text = "2. Eliminar los dígitos múltiplos de 'd1'"
+        currentExercise = 2
+        Result.Text = String.Empty
+        LabelInput2.Visible = True
+        Input2.Visible = True
     End Sub
 
     Private Sub BtnExercise3_Click(sender As Object, e As EventArgs) Handles BtnExercise3.Click
         ActivateButton(sender, RGBColors.color3)
         HeaderTitle.Text = "3. Seleccionar dígitos primos en otro número entero"
+        currentExercise = 3
+        Result.Text = String.Empty
     End Sub
 
     Private Sub BtnExercise4_Click(sender As Object, e As EventArgs) Handles BtnExercise4.Click
         ActivateButton(sender, RGBColors.color4)
         HeaderTitle.Text = "4. Seleccionar dígitos repetidos en otro número entero"
+        currentExercise = 4
+        Result.Text = String.Empty
     End Sub
 
     Private Sub BtnExercise5_Click(sender As Object, e As EventArgs) Handles BtnExercise5.Click
         ActivateButton(sender, RGBColors.color5)
         HeaderTitle.Text = "5. Verificar si los dígitos están en orden descendente"
+        currentExercise = 5
+        Result.Text = String.Empty
     End Sub
 
     Private Sub BtnExercise6_Click(sender As Object, e As EventArgs) Handles BtnExercise6.Click
         ActivateButton(sender, RGBColors.color6)
         HeaderTitle.Text = "6. Insertar un digito en el orden que corresponde"
+        currentExercise = 6
+        Result.Text = String.Empty
     End Sub
 
     Private Sub BtnExercise7_Click(sender As Object, e As EventArgs) Handles BtnExercise7.Click
         ActivateButton(sender, RGBColors.color2)
         HeaderTitle.Text = "7. Encontrar la intersección de dígitos de 2 números enteros, el resultado es otro número entero"
+        currentExercise = 7
+        Result.Text = String.Empty
     End Sub
 
     Private Sub BtnExercise8_Click(sender As Object, e As EventArgs) Handles BtnExercise8.Click
         ActivateButton(sender, RGBColors.color1)
         HeaderTitle.Text = "8. Encontrar el número de dígitos diferentes"
+        currentExercise = 8
+        Result.Text = String.Empty
     End Sub
 
     Private Sub BtnExercise9_Click(sender As Object, e As EventArgs) Handles BtnExercise9.Click
         ActivateButton(sender, RGBColors.color3)
         HeaderTitle.Text = "9. Ordenar los dígitos de un NE"
+        currentExercise = 9
+        Result.Text = String.Empty
+
     End Sub
 
     Private Sub BtnExercise10_Click(sender As Object, e As EventArgs) Handles BtnExercise10.Click
         ActivateButton(sender, RGBColors.color4)
         HeaderTitle.Text = "10. Verificar si la jugada de dados es POKAR (4 dígitos iguales)"
+        currentExercise = 10
+        Result.Text = String.Empty
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles StudentBtn.Click
@@ -168,14 +195,94 @@ Public Class Form1
         Return number Mod 2 = 0
     End Function
 
-    '<-- 1. Accumuate terms according to the formula with odd digits -->
-    'Public Function AccumulateOddDigits(number As Integer) As String
-    '    Dim result As String = ""
-    '    Dim digit As Byte
-    '    While number > 0
-    '        digit = number Mod 10
-    '        number \= 10
+    Public Function ReverseNumber(number As Integer) As Integer
+        Dim result As Integer : Dim digit As Byte
+        While number > 0
+            digit = number Mod 10
+            result = result * 10 + digit
+            number \= 10
+        End While
+        Return result
+    End Function
 
-    '    End While
-    'End Function
+    Public Function isMultiple(digit As Integer, multiple As Integer) As Boolean
+        Return digit Mod multiple = 0
+    End Function
+
+    Public Function isPrime(number As Integer) As Boolean
+        Dim result As Boolean = number > 1
+        For index As Integer = 2 To number - 1
+            If number Mod index = 0 Then
+                result = False
+            End If
+        Next
+        Return result
+    End Function
+
+    '<-- 1. Accumuate terms according to the formula with odd digits -->
+    Public Function AccumulateOddDigits(number As Integer) As String
+        Dim result As String = "" : Dim digit As Byte
+        Dim count As Integer = 2
+        Dim intermittent, first As Boolean
+        intermittent = True : first = True
+        While number > 0
+            digit = number Mod 10
+            number \= 10
+            If Not EvenAndOdd(digit) Then
+                If first Then
+                    result = $"({digit} / {count}!) ^ (1/{count})"
+                Else
+                    If intermittent Then
+                        result = $"{result}  -  ({digit} / {count}!) ^ (1/{count})"
+                    Else
+                        result = $"{result}  +  ({digit} / {count}!) ^ (1/{count})"
+                    End If
+                    intermittent = Not intermittent
+                End If
+                first = False
+                count += 1
+            End If
+        End While
+        Return "F = " + result
+    End Function
+
+    '<-- 2. Eliminar los dígitos múltiplos de d1 -->
+    Public Function EliminateMultiples(number As Integer, d1 As Integer) As Integer
+        Dim result As Integer = 0 : Dim digit As Byte
+        While number > 0
+            digit = number Mod 10
+            number \= 10
+            If Not isMultiple(digit, d1) Then
+                result = result * 10 + digit
+            End If
+        End While
+        Return ReverseNumber(result)
+    End Function
+
+    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+        Try
+            Result.ForeColor = Color.FromArgb(255, 255, 255)
+            Select Case currentExercise
+                Case 1
+                    Result.Text = AccumulateOddDigits(Input1.Text)
+                Case 2
+                    Result.Text = EliminateMultiples(Input1.Text, Input2.Text)
+                Case 3
+                    Result.Text = isPrime(Input1.Text)
+                Case 4
+                Case 5
+                Case 6
+                Case 7
+                Case 8
+                Case 9
+                Case 10
+                Case Else
+                    Result.ForeColor = Color.FromArgb(130, 83, 215)
+                    Result.Text = "No se ha seleccionado ningún ejercicio."
+            End Select
+        Catch ex As Exception
+            Result.ForeColor = Color.FromArgb(237, 61, 61)
+            Result.Text = "Por favor, ingrese un número valido (de tipo Entero)"
+        End Try
+    End Sub
 End Class
