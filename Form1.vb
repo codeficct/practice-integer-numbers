@@ -288,6 +288,19 @@ Public Class Form1
         Return result
     End Function
 
+    '<-- 4. Select prime digits in other integer number -->
+    Public Function SelectRepeatDigits(number As Integer) As Integer
+        Dim digit As Byte : Dim result As Integer = 0
+        While number > 0
+            digit = number Mod 10
+            number \= 10
+            If isEqual(number, digit) Or isEqual(result, digit) Then
+                result = result * 10 + digit
+            End If
+        End While
+        Return result
+    End Function
+
     Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
         Try
             Result.ForeColor = Color.FromArgb(255, 255, 255)
@@ -304,7 +317,7 @@ Public Class Form1
                 Case 3
                     Result.Text = SelectPrimeDigits(Input1.Text)
                 Case 4
-                    ' Result.Text = SelectRepeatDigits(Input1.Text)
+                    Result.Text = SelectRepeatDigits(Input1.Text)
                 Case 5
                     ' Result.Text = IsDescendingOrder(Input1.Text)
                 Case 6
