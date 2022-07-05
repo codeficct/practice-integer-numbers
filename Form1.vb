@@ -136,6 +136,9 @@ Public Class Form1
         HeaderTitle.Text = "6. Insertar un digito en el orden que corresponde"
         currentExercise = 6
         Result.Text = String.Empty
+        LabelInput2.Text = "dig"
+        LabelInput2.Visible = True
+        Input2.Visible = True
     End Sub
 
     Private Sub BtnExercise7_Click(sender As Object, e As EventArgs) Handles BtnExercise7.Click
@@ -219,6 +222,19 @@ Public Class Form1
         Return result
     End Function
 
+    Public Function isEqual(number As Integer, digit As Byte) As Boolean
+        Dim result As Boolean = False
+        Dim dig As Byte
+        While number > 0
+            dig = number Mod 10
+            number \= 10
+            If digit = dig Then
+                result = True
+            End If
+        End While
+        Return result
+    End Function
+
     '<-- 1. Accumuate terms according to the formula with odd digits -->
     Public Function AccumulateOddDigits(number As Integer) As String
         Dim result As String = "" : Dim digit As Byte
@@ -246,7 +262,7 @@ Public Class Form1
         Return "F = " + result
     End Function
 
-    '<-- 2. Eliminar los dígitos múltiplos de d1 -->
+    '<-- 2. Remove multiple digits of any digit -->
     Public Function EliminateMultiples(number As Integer, d1 As Integer) As Integer
         Dim result As Integer = 0 : Dim digit As Byte
         While number > 0
@@ -259,6 +275,19 @@ Public Class Form1
         Return ReverseNumber(result)
     End Function
 
+    '<-- 3. Select prime digits in other integer number -->
+    Public Function SelectPrimeDigits(number As Integer) As Integer
+        Dim result As Integer : Dim digit As Byte
+        While number > 0
+            digit = number Mod 10
+            If isPrime(digit) Then
+                result = result * 10 + digit
+            End If
+            number \= 10
+        End While
+        Return result
+    End Function
+
     Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
         Try
             Result.ForeColor = Color.FromArgb(255, 255, 255)
@@ -266,12 +295,28 @@ Public Class Form1
                 Case 1
                     Result.Text = AccumulateOddDigits(Input1.Text)
                 Case 2
-                    Result.Text = EliminateMultiples(Input1.Text, Input2.Text)
+                    If (Input1.Text.Length = 0) Or (Input2.Text.Length = 0) Then
+                        Result.ForeColor = RGBColors.color2
+                        Result.Text = "'N' y 'd1' son campos requeridos."
+                    Else
+                        Result.Text = EliminateMultiples(Input1.Text, Input2.Text)
+                    End If
                 Case 3
-                    Result.Text = isPrime(Input1.Text)
+                    Result.Text = SelectPrimeDigits(Input1.Text)
                 Case 4
+                    ' Result.Text = SelectRepeatDigits(Input1.Text)
                 Case 5
+                    ' Result.Text = IsDescendingOrder(Input1.Text)
                 Case 6
+                    ' If (Input1.Text.Length <> 0) And (Input2.Text.Length = 1) Then
+                    '     Result.Text = InsertDigitInOrder(Input1.Text, Input2.Text)
+                    ' ElseIf Input2.Text.Length > 1 Then
+                    '     Result.ForeColor = RGBColors.color6
+                    '     Result.Text = "'Dig' es de tipo byte, asegurese de enviar solo digitos."
+                    ' Else
+                    '     Result.ForeColor = RGBColors.color6
+                    '     Result.Text = "'N' y 'dig' son campos requeridos."
+                    ' End If
                 Case 7
                 Case 8
                 Case 9
@@ -281,8 +326,13 @@ Public Class Form1
                     Result.Text = "No se ha seleccionado ningún ejercicio."
             End Select
         Catch ex As Exception
+            Dim extra As String = ""
+            If ex.Message = "Arithmetic operation resulted in an overflow." Then
+                extra = "Asegurese de insertar datos dentro del limite esperado (Long = 4294967296)"
+            End If
+
             Result.ForeColor = Color.FromArgb(237, 61, 61)
-            Result.Text = "Por favor, ingrese un número valido (de tipo Entero)"
+            Result.Text = "Por favor, ingrese un número valido (de tipo Entero). " + extra
         End Try
     End Sub
 End Class
