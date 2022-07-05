@@ -371,8 +371,8 @@ Public Class Form1
         Return SortedNumbers(cloneNum, digit, isReverse)
     End Function
 
-    '<-- 7. Find intersection of two integer digits
-    Public Function Intersection(number1 As Integer, number2 As Integer) As Integer
+    '<-- 7. Find intersection of two integer numbers
+    Public Function FindIntersection(number1 As Integer, number2 As Integer) As Integer
         Dim digit As Byte
         Dim result As Integer
         While number1 > 0
@@ -436,7 +436,7 @@ Public Class Form1
                     End If
                 Case 7
                     If (Input1.Text.Length > 0) And (Input2.Text.Length > 0) Then
-                        Result.Text = Intersection(Input1.Text, Input2.Text)
+                        Result.Text = FindIntersection(Input1.Text, Input2.Text)
                     Else
                         Result.ForeColor = RGBColors.color1
                         Result.Text = ErroMessage(2)
