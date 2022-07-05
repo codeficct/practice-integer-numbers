@@ -55,7 +55,7 @@ Partial Class Form1
         Me.Input2 = New System.Windows.Forms.TextBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.HeaderTitle = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.LabelInput1 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Result = New System.Windows.Forms.TextBox()
         Me.Input1 = New System.Windows.Forms.TextBox()
@@ -447,7 +447,7 @@ Partial Class Form1
         Me.PanelDesktop.Controls.Add(Me.Input2)
         Me.PanelDesktop.Controls.Add(Me.Button2)
         Me.PanelDesktop.Controls.Add(Me.HeaderTitle)
-        Me.PanelDesktop.Controls.Add(Me.Label5)
+        Me.PanelDesktop.Controls.Add(Me.LabelInput1)
         Me.PanelDesktop.Controls.Add(Me.Label4)
         Me.PanelDesktop.Controls.Add(Me.Result)
         Me.PanelDesktop.Controls.Add(Me.Input1)
@@ -519,17 +519,17 @@ Partial Class Form1
         Me.HeaderTitle.Text = "Aún no has seleccionado ningún ejercicio."
         Me.HeaderTitle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'Label5
+        'LabelInput1
         '
-        Me.Label5.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label5.ForeColor = System.Drawing.Color.Gainsboro
-        Me.Label5.Location = New System.Drawing.Point(43, 175)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(22, 21)
-        Me.Label5.TabIndex = 5
-        Me.Label5.Text = "N"
+        Me.LabelInput1.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.LabelInput1.AutoSize = True
+        Me.LabelInput1.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.LabelInput1.ForeColor = System.Drawing.Color.Gainsboro
+        Me.LabelInput1.Location = New System.Drawing.Point(43, 175)
+        Me.LabelInput1.Name = "LabelInput1"
+        Me.LabelInput1.Size = New System.Drawing.Size(22, 21)
+        Me.LabelInput1.TabIndex = 5
+        Me.LabelInput1.Text = "N"
         '
         'Label4
         '
@@ -955,7 +955,7 @@ Partial Class Form1
     Friend WithEvents Label6 As Label
     Friend WithEvents PanelDesktop As Panel
     Friend WithEvents HeaderTitle As TextBox
-    Friend WithEvents Label5 As Label
+    Friend WithEvents LabelInput1 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Result As TextBox
     Friend WithEvents Input1 As TextBox
