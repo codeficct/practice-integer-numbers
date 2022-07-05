@@ -476,7 +476,7 @@ Partial Class Form1
         Me.Input2.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(74, Byte), Integer))
         Me.Input2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.Input2.ForeColor = System.Drawing.Color.White
-        Me.Input2.Location = New System.Drawing.Point(233, 172)
+        Me.Input2.Location = New System.Drawing.Point(242, 172)
         Me.Input2.Name = "Input2"
         Me.Input2.Size = New System.Drawing.Size(101, 29)
         Me.Input2.TabIndex = 9
