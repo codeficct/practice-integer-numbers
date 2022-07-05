@@ -301,6 +301,25 @@ Public Class Form1
         Return result
     End Function
 
+     '<-- 5. Verify if digits are in descending order -->
+    Public Function IsDescendingOrder(number As Integer) As Boolean
+        Dim digit, firstDigit As Byte
+        Dim result As Boolean = False
+        firstDigit = number Mod 10
+        number \= 10
+        While number > 0
+            digit = number Mod 10
+            number \= 10
+            If firstDigit <= digit Then
+                firstDigit = digit
+                result = True
+            Else
+                result = False
+            End If
+        End While
+        Return result
+    End Function
+
     Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
         Try
             Result.ForeColor = Color.FromArgb(255, 255, 255)
@@ -319,7 +338,7 @@ Public Class Form1
                 Case 4
                     Result.Text = SelectRepeatDigits(Input1.Text)
                 Case 5
-                    ' Result.Text = IsDescendingOrder(Input1.Text)
+                    Result.Text = IsDescendingOrder(Input1.Text)
                 Case 6
                     ' If (Input1.Text.Length <> 0) And (Input2.Text.Length = 1) Then
                     '     Result.Text = InsertDigitInOrder(Input1.Text, Input2.Text)
