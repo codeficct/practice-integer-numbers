@@ -320,6 +320,49 @@ Public Class Form1
         Return result
     End Function
 
+    '<-- 6. Insert digit in correspond order -->
+    Public Function SortedNumbers(number As Integer, addDigit As Byte, reverse As Boolean) As Integer
+        Dim numArray(Str(number).Length) As Integer
+        Dim digit As Integer
+        Dim count, index As Integer : count = 1
+        Dim sortedNumber As Integer = 0
+        numArray(0) = addDigit
+        While number > 0
+            digit = number Mod 10
+            number \= 10
+            numArray(count) = digit
+            count += 1
+        End While
+        If reverse Then
+            Array.Sort(numArray)
+            Array.Reverse(numArray)
+            Array.Resize(numArray, numArray.Length - 1)
+        Else
+            Array.Sort(numArray)
+        End If
+        For index = 0 To numArray.GetUpperBound(0)
+            sortedNumber = sortedNumber * 10 + numArray(index)
+        Next
+        Return sortedNumber
+    End Function
+
+    Public Function InsertDigitInOrder(number As Integer, digit As Byte) As Long
+        Dim cloneNum As Integer
+        Dim isReverse As Boolean = False
+        cloneNum = number
+        Dim currentDigit, firstDigit As Byte
+        firstDigit = number Mod 10
+        number \= 10
+        While number > 0
+            currentDigit = number Mod 10
+            number \= 10
+            If firstDigit < currentDigit Then
+                isReverse = True
+            End If
+        End While
+        Return SortedNumbers(cloneNum, digit, isReverse)
+    End Function
+
     Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
         Try
             Result.ForeColor = Color.FromArgb(255, 255, 255)
@@ -340,15 +383,15 @@ Public Class Form1
                 Case 5
                     Result.Text = IsDescendingOrder(Input1.Text)
                 Case 6
-                    ' If (Input1.Text.Length <> 0) And (Input2.Text.Length = 1) Then
-                    '     Result.Text = InsertDigitInOrder(Input1.Text, Input2.Text)
-                    ' ElseIf Input2.Text.Length > 1 Then
-                    '     Result.ForeColor = RGBColors.color6
-                    '     Result.Text = "'Dig' es de tipo byte, asegurese de enviar solo digitos."
-                    ' Else
-                    '     Result.ForeColor = RGBColors.color6
-                    '     Result.Text = "'N' y 'dig' son campos requeridos."
-                    ' End If
+                    If (Input1.Text.Length <> 0) And (Input2.Text.Length = 1) Then
+                        Result.Text = InsertDigitInOrder(Input1.Text, Input2.Text)
+                    ElseIf Input2.Text.Length > 1 Then
+                        Result.ForeColor = RGBColors.color6
+                        Result.Text = "'Dig' es de tipo byte, asegurese de enviar solo digitos."
+                    Else
+                        Result.ForeColor = RGBColors.color6
+                        Result.Text = "'N' y 'dig' son campos requeridos."
+                    End If
                 Case 7
                 Case 8
                 Case 9
