@@ -55,7 +55,7 @@ Partial Class Form1
         Me.Input2 = New System.Windows.Forms.TextBox()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.HeaderTitle = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.LabelInput1 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Result = New System.Windows.Forms.TextBox()
         Me.Input1 = New System.Windows.Forms.TextBox()
@@ -432,8 +432,8 @@ Partial Class Form1
         'PanelContainer
         '
         Me.PanelContainer.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.PanelContainer.Controls.Add(Me.PanelDesktop)
         Me.PanelContainer.Controls.Add(Me.PanelStudent)
+        Me.PanelContainer.Controls.Add(Me.PanelDesktop)
         Me.PanelContainer.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelContainer.Location = New System.Drawing.Point(0, 68)
         Me.PanelContainer.Name = "PanelContainer"
@@ -447,7 +447,7 @@ Partial Class Form1
         Me.PanelDesktop.Controls.Add(Me.Input2)
         Me.PanelDesktop.Controls.Add(Me.Button2)
         Me.PanelDesktop.Controls.Add(Me.HeaderTitle)
-        Me.PanelDesktop.Controls.Add(Me.Label5)
+        Me.PanelDesktop.Controls.Add(Me.LabelInput1)
         Me.PanelDesktop.Controls.Add(Me.Label4)
         Me.PanelDesktop.Controls.Add(Me.Result)
         Me.PanelDesktop.Controls.Add(Me.Input1)
@@ -519,17 +519,17 @@ Partial Class Form1
         Me.HeaderTitle.Text = "Aún no has seleccionado ningún ejercicio."
         Me.HeaderTitle.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
-        'Label5
+        'LabelInput1
         '
-        Me.Label5.Anchor = System.Windows.Forms.AnchorStyles.None
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
-        Me.Label5.ForeColor = System.Drawing.Color.Gainsboro
-        Me.Label5.Location = New System.Drawing.Point(43, 175)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(22, 21)
-        Me.Label5.TabIndex = 5
-        Me.Label5.Text = "N"
+        Me.LabelInput1.Anchor = System.Windows.Forms.AnchorStyles.None
+        Me.LabelInput1.AutoSize = True
+        Me.LabelInput1.Font = New System.Drawing.Font("Segoe UI Semibold", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point)
+        Me.LabelInput1.ForeColor = System.Drawing.Color.Gainsboro
+        Me.LabelInput1.Location = New System.Drawing.Point(43, 175)
+        Me.LabelInput1.Name = "LabelInput1"
+        Me.LabelInput1.Size = New System.Drawing.Size(22, 21)
+        Me.LabelInput1.TabIndex = 5
+        Me.LabelInput1.Text = "N"
         '
         'Label4
         '
@@ -594,7 +594,7 @@ Partial Class Form1
         Me.Panel6.Controls.Add(Me.Label12)
         Me.Panel6.Controls.Add(Me.Panel7)
         Me.Panel6.Controls.Add(Me.Label7)
-        Me.Panel6.Location = New System.Drawing.Point(340, 40)
+        Me.Panel6.Location = New System.Drawing.Point(343, 143)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Size = New System.Drawing.Size(200, 228)
         Me.Panel6.TabIndex = 4
@@ -617,9 +617,9 @@ Partial Class Form1
         Me.Label15.Location = New System.Drawing.Point(0, 176)
         Me.Label15.Name = "Label15"
         Me.Label15.Padding = New System.Windows.Forms.Padding(0, 10, 0, 10)
-        Me.Label15.Size = New System.Drawing.Size(188, 40)
+        Me.Label15.Size = New System.Drawing.Size(176, 40)
         Me.Label15.TabIndex = 11
-        Me.Label15.Text = "Ing. Mollo Mamani Alberto"
+        Me.Label15.Text = "Ing. Mollo A. Luis Alberto"
         '
         'Panel14
         '
@@ -722,7 +722,7 @@ Partial Class Form1
         Me.Panel4.Controls.Add(Me.Label8)
         Me.Panel4.Controls.Add(Me.Panel5)
         Me.Panel4.Controls.Add(Me.Label6)
-        Me.Panel4.Location = New System.Drawing.Point(165, 40)
+        Me.Panel4.Location = New System.Drawing.Point(168, 143)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(175, 228)
         Me.Panel4.TabIndex = 2
@@ -955,7 +955,7 @@ Partial Class Form1
     Friend WithEvents Label6 As Label
     Friend WithEvents PanelDesktop As Panel
     Friend WithEvents HeaderTitle As TextBox
-    Friend WithEvents Label5 As Label
+    Friend WithEvents LabelInput1 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Result As TextBox
     Friend WithEvents Input1 As TextBox
