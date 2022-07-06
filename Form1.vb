@@ -201,7 +201,7 @@ Public Class Form1
     Public Function ErroMessage(many As Integer) As String
         Return If(many = 1, $"¡{LabelInput1.Text} es un campo requerido!", $"¡{LabelInput1.Text} y {LabelInput2.Text} son campos requeridos!")
     End Function
-
+    'Methods for the exercises
     Public Function EvenAndOdd(number As Integer) As Boolean
         Return number Mod 2 = 0
     End Function
@@ -241,6 +241,38 @@ Public Class Form1
             End If
         End While
         Return result
+    End Function
+
+    Public Function removeDigit(number As Integer, digit As Byte) As Integer
+        Dim dig As Byte
+        Dim result As Integer = 0
+        Dim pass As Boolean = True
+        While number > 0
+            dig = number Mod 10
+            number \= 10
+            If (digit <> dig) And pass Then
+                result = result * 10 + dig
+            ElseIf digit = dig Then
+                pass = False
+            Else
+                result = result * 10 + dig
+            End If
+        End While
+        Return ReverseNumber(result)
+    End Function
+
+    Public Function getMajorDigit(number As Integer) As Byte
+        Dim majorDigit, dig As Byte
+        majorDigit = number Mod 10
+        number \= 10
+        While number > 0
+            dig = number Mod 10
+            number \= 10
+            If dig > majorDigit Then
+                majorDigit = dig
+            End If
+        End While
+        Return majorDigit
     End Function
 
     '<-- 1. Accumuate terms according to the formula with odd digits -->
@@ -371,7 +403,7 @@ Public Class Form1
         Return SortedNumbers(cloneNum, digit, isReverse)
     End Function
 
-    '<-- 7. Find intersection of two integer numbers
+    '<-- 7. Find intersection of two integer numbers -->
     Public Function FindIntersection(number1 As Integer, number2 As Integer) As Integer
         Dim digit As Byte
         Dim result As Integer
@@ -383,6 +415,21 @@ Public Class Form1
             End If
         End While
         Return ReverseNumber(result)
+    End Function
+
+    '<-- 8. Find and count number of different digits -->
+    Public Function CountDigitsOfNumber(number As Integer) As Integer
+        Dim digit As Byte
+        Dim storeNumber As Integer
+        storeNumber = 0
+        While number > 0
+            digit = number Mod 10
+            number \= 10
+            If Not isEqual(storeNumber, digit) Then
+                storeNumber = storeNumber * 10 + digit
+            End If
+        End While
+        Return storeNumber.ToString().Length
     End Function
 
     Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
@@ -442,7 +489,19 @@ Public Class Form1
                         Result.Text = ErroMessage(2)
                     End If
                 Case 8
+                    If Input1.Text.Length > 0 Then
+                        Result.Text = CountDigitsOfNumber(Input1.Text)
+                    Else
+                        Result.ForeColor = RGBColors.color2
+                        Result.Text = ErroMessage(1)
+                    End If
                 Case 9
+                    If Input1.Text.Length > 0 Then
+                        Result.Text = OrderDigits(Input1.Text)
+                    Else
+                        Result.ForeColor = RGBColors.color3
+                        Result.Text = ErroMessage(1)
+                    End If
                 Case 10
                 Case Else
                     Result.ForeColor = Color.FromArgb(130, 83, 215)
