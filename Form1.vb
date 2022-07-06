@@ -432,6 +432,25 @@ Public Class Form1
         Return storeNumber.ToString().Length
     End Function
 
+    '<-- 9. Order the digits of a integer number -->
+    Public Function OrderDigits(number As Integer) As Integer
+        Dim sortResult As Integer
+        Dim numArray(number.ToString().Length) As Integer
+        Dim digit As Byte
+        Dim count, index As Integer : count = 0
+        While number > 0
+            digit = number Mod 10
+            number \= 10
+            numArray(count) = digit
+            count += 1
+        End While
+        Array.Sort(numArray)
+        For index = 0 To numArray.GetUpperBound(0)
+            sortResult = sortResult * 10 + numArray(index)
+        Next
+        Return sortResult
+    End Function
+
     Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
         Try
             Result.ForeColor = Color.FromArgb(255, 255, 255)
