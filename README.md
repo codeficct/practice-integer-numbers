@@ -8,4 +8,4 @@ git clone https://github.com/satulio/practice-integer-numbers.git
 
 # Demo preview
 
-![Screenshot 2022-07-02 200029](https://user-images.githubusercontent.com/88288135/177019571-42dc6d70-f4ed-409e-bc99-dbfcf41516c1.png)
+![practice-integer-numbers-preview](https://user-images.githubusercontent.com/88288135/177637165-e5ea7e18-09ac-4596-bfbd-b9dbd5a15d24.png)
