@@ -432,8 +432,8 @@ Partial Class Form1
         'PanelContainer
         '
         Me.PanelContainer.BackColor = System.Drawing.Color.FromArgb(CType(CType(34, Byte), Integer), CType(CType(33, Byte), Integer), CType(CType(74, Byte), Integer))
-        Me.PanelContainer.Controls.Add(Me.PanelDesktop)
         Me.PanelContainer.Controls.Add(Me.PanelStudent)
+        Me.PanelContainer.Controls.Add(Me.PanelDesktop)
         Me.PanelContainer.Dock = System.Windows.Forms.DockStyle.Fill
         Me.PanelContainer.Location = New System.Drawing.Point(0, 68)
         Me.PanelContainer.Name = "PanelContainer"
@@ -594,7 +594,7 @@ Partial Class Form1
         Me.Panel6.Controls.Add(Me.Label12)
         Me.Panel6.Controls.Add(Me.Panel7)
         Me.Panel6.Controls.Add(Me.Label7)
-        Me.Panel6.Location = New System.Drawing.Point(340, 40)
+        Me.Panel6.Location = New System.Drawing.Point(343, 143)
         Me.Panel6.Name = "Panel6"
         Me.Panel6.Size = New System.Drawing.Size(200, 228)
         Me.Panel6.TabIndex = 4
@@ -617,9 +617,9 @@ Partial Class Form1
         Me.Label15.Location = New System.Drawing.Point(0, 176)
         Me.Label15.Name = "Label15"
         Me.Label15.Padding = New System.Windows.Forms.Padding(0, 10, 0, 10)
-        Me.Label15.Size = New System.Drawing.Size(188, 40)
+        Me.Label15.Size = New System.Drawing.Size(176, 40)
         Me.Label15.TabIndex = 11
-        Me.Label15.Text = "Ing. Mollo Mamani Alberto"
+        Me.Label15.Text = "Ing. Mollo A. Luis Alberto"
         '
         'Panel14
         '
@@ -722,7 +722,7 @@ Partial Class Form1
         Me.Panel4.Controls.Add(Me.Label8)
         Me.Panel4.Controls.Add(Me.Panel5)
         Me.Panel4.Controls.Add(Me.Label6)
-        Me.Panel4.Location = New System.Drawing.Point(165, 40)
+        Me.Panel4.Location = New System.Drawing.Point(168, 143)
         Me.Panel4.Name = "Panel4"
         Me.Panel4.Size = New System.Drawing.Size(175, 228)
         Me.Panel4.TabIndex = 2
