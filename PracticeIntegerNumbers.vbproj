@@ -3,9 +3,19 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
-    <StartupObject>Sub Main</StartupObject>
+    <StartupObject>PracticeIntegerNumbers.Form1</StartupObject>
     <UseWindowsForms>true</UseWindowsForms>
     <MyType>WindowsForms</MyType>
+    <ApplicationIcon>uagrm.ico</ApplicationIcon>
+    <AssemblyName>Práctico de Números Enteros</AssemblyName>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+    <Authors>Luis Gabriel Janco Alvarez</Authors>
+    <Company>github.com/LuiSauter</Company>
+    <Description>Aplicación windows form en visual basic, práctico resuelto de números enteros.</Description>
+    <Copyright>Copyright © UAGRM-FICCT 2022</Copyright>
+    <PackageProjectUrl>https://github.com/satulio/practice-integer-numbers</PackageProjectUrl>
+    <PackageIcon>favicon-32x32.png</PackageIcon>
+    <PackageIconUrl />
   </PropertyGroup>
 
   <ItemGroup>
@@ -39,6 +49,10 @@
     <None Update="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="..\..\..\Pictures\favicon-32x32.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
     </None>
   </ItemGroup>
 

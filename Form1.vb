@@ -43,21 +43,13 @@ Public Class Form1
         Me.PanelFormContainer.Region = region
         Me.Invalidate()
     End Sub
-    '----------------COLOR Y GRIP DE RECTANGULO INFERIOR'
-    'Protected Overrides Sub OnPaint(ByVal e As PaintEventArgs)
-    '    Dim blueBrush As SolidBrush = New SolidBrush(Color.FromArgb(34, 33, 74))
-    '    e.Graphics.FillRectangle(blueBrush, sizeGripRectangle)
-    '    MyBase.OnPaint(e)
-    '    ControlPaint.DrawSizeGrip(e.Graphics, Color.Transparent, sizeGripRectangle)
-    'End Sub
-
     'Constructor
     Public Sub New()
         ' Esta llamada es exigida por el diseñador.
         InitializeComponent()
         ' Agregue cualquier inicialización después de la llamada a InitializeComponent().
         leftBorderBtn = New Panel()
-        leftBorderBtn.Size = New Size(7, 38)
+        leftBorderBtn.Size = New Size(7, 36)
         PanelMenu.Controls.Add(leftBorderBtn)
         LabelInput2.Visible = False
         Input2.Visible = False
@@ -76,6 +68,7 @@ Public Class Form1
             currentBtn.BackColor = Color.FromArgb(37, 36, 81)
             currentBtn.ForeColor = customColor
             currentBtn.TextAlign = ContentAlignment.MiddleCenter
+            RunBtn.Padding = New Padding(6, 1, 6, 3)
             'Left border
             leftBorderBtn.BackColor = customColor
             leftBorderBtn.Location = New Point(0, currentBtn.Location.Y)
@@ -98,6 +91,7 @@ Public Class Form1
         ActivateButton(sender, RGBColors.color1)
         HeaderTitle.Text = "1. Acumular términos de acuerdo a la formula con dígitos impares:"
         currentExercise = 1
+        RunBtn.Text = $"Ejercicio {currentExercise}"
         Result.Text = String.Empty
     End Sub
 
@@ -105,6 +99,7 @@ Public Class Form1
         ActivateButton(sender, RGBColors.color2)
         HeaderTitle.Text = "2. Eliminar los dígitos múltiplos de 'd1'"
         currentExercise = 2
+        RunBtn.Text = $"Ejercicio {currentExercise}"
         Result.Text = String.Empty
         LabelInput2.Visible = True
         Input2.Visible = True
@@ -114,6 +109,7 @@ Public Class Form1
         ActivateButton(sender, RGBColors.color3)
         HeaderTitle.Text = "3. Seleccionar dígitos primos en otro número entero"
         currentExercise = 3
+        RunBtn.Text = $"Ejercicio {currentExercise}"
         Result.Text = String.Empty
     End Sub
 
@@ -121,6 +117,7 @@ Public Class Form1
         ActivateButton(sender, RGBColors.color4)
         HeaderTitle.Text = "4. Seleccionar dígitos repetidos en otro número entero"
         currentExercise = 4
+        RunBtn.Text = $"Ejercicio {currentExercise}"
         Result.Text = String.Empty
     End Sub
 
@@ -128,6 +125,7 @@ Public Class Form1
         ActivateButton(sender, RGBColors.color5)
         HeaderTitle.Text = "5. Verificar si los dígitos están en orden descendente"
         currentExercise = 5
+        RunBtn.Text = $"Ejercicio {currentExercise}"
         Result.Text = String.Empty
     End Sub
 
@@ -135,6 +133,7 @@ Public Class Form1
         ActivateButton(sender, RGBColors.color6)
         HeaderTitle.Text = "6. Insertar un digito en el orden que corresponde"
         currentExercise = 6
+        RunBtn.Text = $"Ejercicio {currentExercise}"
         Result.Text = String.Empty
         LabelInput2.Text = "dig"
         LabelInput2.Visible = True
@@ -145,6 +144,7 @@ Public Class Form1
         ActivateButton(sender, RGBColors.color1)
         HeaderTitle.Text = "7. Encontrar la intersección de dígitos de 2 números enteros, el resultado es otro número entero"
         currentExercise = 7
+        RunBtn.Text = $"Ejercicio {currentExercise}"
         Result.Text = String.Empty
         Input2.Visible = True
         LabelInput1.Text = "N1"
@@ -156,6 +156,7 @@ Public Class Form1
         ActivateButton(sender, RGBColors.color2)
         HeaderTitle.Text = "8. Encontrar el número de dígitos diferentes"
         currentExercise = 8
+        RunBtn.Text = $"Ejercicio {currentExercise}"
         Result.Text = String.Empty
     End Sub
 
@@ -163,6 +164,7 @@ Public Class Form1
         ActivateButton(sender, RGBColors.color3)
         HeaderTitle.Text = "9. Ordenar los dígitos de un NE"
         currentExercise = 9
+        RunBtn.Text = $"Ejercicio {currentExercise}"
         Result.Text = String.Empty
 
     End Sub
@@ -171,6 +173,7 @@ Public Class Form1
         ActivateButton(sender, RGBColors.color4)
         HeaderTitle.Text = "10. Verificar si la jugada de dados es POKAR (4 dígitos iguales)"
         currentExercise = 10
+        RunBtn.Text = $"Ejercicio {currentExercise}"
         Result.Text = String.Empty
     End Sub
 
@@ -277,7 +280,7 @@ Public Class Form1
 
     '<-- 1. Accumuate terms according to the formula with odd digits -->
     Public Function AccumulateOddDigits(number As Integer) As String
-        Dim result As String = "" : Dim digit As Byte
+        Dim result As String = "0" : Dim digit As Byte
         Dim count As Integer = 2
         Dim intermittent, first As Boolean
         intermittent = True : first = True
@@ -341,7 +344,7 @@ Public Class Form1
         Return result
     End Function
 
-     '<-- 5. Verify if digits are in descending order -->
+    '<-- 5. Verify if digits are in descending order -->
     Public Function IsDescendingOrder(number As Integer) As Boolean
         Dim digit, firstDigit As Byte
         Dim result As Boolean = False
@@ -451,7 +454,39 @@ Public Class Form1
         Return sortResult
     End Function
 
-    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+    '<-- 10. Verify if the dice play is poker -->
+    Public Function countIsEqual(number As Integer, digit As Byte) As Integer
+        Dim dig As Byte
+        Dim countDigit As Integer = 0
+        While number > 0
+            dig = number Mod 10
+            number \= 10
+            If dig = digit Then
+                countDigit += 1
+            End If
+        End While
+        Return countDigit
+    End Function
+
+    Public Function IsPoker(number As Integer) As Boolean
+        Dim digit As Byte
+        Dim result As Boolean = False
+        Dim count, currentNumber As Integer : count = 0
+        currentNumber = number
+
+        While number > 0
+            digit = number Mod 10
+            number \= 10
+            If countIsEqual(currentNumber, digit) >= 4 Then
+                result = True
+                Exit While
+            End If
+        End While
+
+        Return result
+    End Function
+
+    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles RunBtn.Click
         Try
             Result.ForeColor = Color.FromArgb(255, 255, 255)
             Select Case currentExercise
@@ -463,7 +498,7 @@ Public Class Form1
                         Result.Text = ErroMessage(1)
                     End If
                 Case 2
-                    If (Input1.Text.Length > 0) Or (Input2.Text.Length > 0) Then
+                    If (Input1.Text.Length > 0) And (Input2.Text.Length > 0) Then
                         Result.Text = EliminateMultiples(Input1.Text, Input2.Text)
                     Else
                         Result.ForeColor = RGBColors.color2
@@ -491,11 +526,15 @@ Public Class Form1
                         Result.Text = ErroMessage(1)
                     End If
                 Case 6
-                    If (Input1.Text.Length <> 0) And (Input2.Text.Length = 1) Then
-                        Result.Text = InsertDigitInOrder(Input1.Text, Input2.Text)
-                    ElseIf Input2.Text.Length > 1 Then
-                        Result.ForeColor = RGBColors.color6
-                        Result.Text = "'Dig' es de tipo byte, asegurese de enviar solo digitos."
+                    If (Input1.Text.Length > 0) And (Input2.Text.Length > 0) Then
+                        If IsNumeric(CInt(Input1.Text)) And IsNumeric(CInt(Input2.Text)) Then
+                            If (Input2.Text.Length = 1) Then
+                                Result.Text = InsertDigitInOrder(Input1.Text, Input2.Text)
+                            Else
+                                Result.ForeColor = RGBColors.color6
+                                Result.Text = "'Dig' es de tipo byte, asegurese de enviar solo digitos."
+                            End If
+                        End If
                     Else
                         Result.ForeColor = RGBColors.color6
                         Result.Text = ErroMessage(2)
@@ -522,6 +561,12 @@ Public Class Form1
                         Result.Text = ErroMessage(1)
                     End If
                 Case 10
+                    If Input1.Text.Length > 0 Then
+                        Result.Text = IsPoker(Input1.Text)
+                    Else
+                        Result.ForeColor = RGBColors.color4
+                        Result.Text = ErroMessage(1)
+                    End If
                 Case Else
                     Result.ForeColor = Color.FromArgb(130, 83, 215)
                     Result.Text = "No se ha seleccionado ningún ejercicio."
@@ -531,9 +576,23 @@ Public Class Form1
             If ex.Message = "Arithmetic operation resulted in an overflow." Then
                 extra = "Asegurese de insertar datos dentro del limite esperado (Long = 4294967296)"
             End If
-
             Result.ForeColor = Color.FromArgb(237, 61, 61)
             Result.Text = "Por favor, ingrese un número valido (de tipo Entero). " + extra
         End Try
     End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Result.Clear()
+        Input1.Clear()
+        Input2.Clear()
+    End Sub
+End Class
+
+Public Class RGBColors
+    Public Shared color1 As Color = Color.FromArgb(172, 126, 241)
+    Public Shared color2 As Color = Color.FromArgb(249, 118, 176)
+    Public Shared color3 As Color = Color.FromArgb(253, 138, 114)
+    Public Shared color4 As Color = Color.FromArgb(95, 77, 221)
+    Public Shared color5 As Color = Color.FromArgb(249, 88, 155)
+    Public Shared color6 As Color = Color.FromArgb(24, 161, 251)
 End Class
