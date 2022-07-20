@@ -1,5 +1,5 @@
 # Practice of Integer Numbers
-This project is for educational and practices of university course of programming (legazy) of Integer Numbers.
+This project is for educational and practices of [university](https://www.uagrm.edu.bo/) course of programming (legazy) of Integer Numbers.
 
 ```bash
 # Clone this repository in your local
